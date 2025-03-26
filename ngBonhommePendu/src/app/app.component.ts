@@ -86,6 +86,10 @@ export class AppComponent {
           this.gameData.guessedLetters.push(event.letter);
           break;
         }
+        case "Win": {
+          this.gameData.won = true;
+          break;
+        }
       }
 
       if(event.events){

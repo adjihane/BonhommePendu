@@ -7,10 +7,20 @@ namespace BonhommePendu.Events
     {
         public override string EventType { get { return "RevealLetter"; } }
 
-        public RevealLetterEvent(GameData gameData, char letter, int index)
+        public char Letter { get; set; }
+        public int index { get; set; }
+
+        public bool HasGuessed { get; set; }
+
+        public RevealLetterEvent(GameData gameData, char letter, int mIndex)
         {
             // Conseil: Vous pouvez utiliser gameData.RevealLetter mettre à jour gameData
+            gameData.RevealLetter(index);
+
+            Letter = letter;
+            index = mIndex;
             // Conseil: Vous pouvez utiliser gameData.HasGuessedTheWord pour savoir si c'est une victoire
+            HasGuessed = gameData.HasGuessedTheWord;
         }
     }
 }
